@@ -1,4 +1,4 @@
-import React, { use } from "react";
+import React from "react";
 import Button from "react-bootstrap/Button";
 import Container from "react-bootstrap/Container";
 import Form from "react-bootstrap/Form";
@@ -37,9 +37,9 @@ function navbar() {
               <Nav.Link
                 className="text-light"
                 style={{ fontFamily: "Poppins", fontWeight: "bold" }}
-                href="#action1"
+                href="/daftar-komik/page/1"
               >
-                GENRE
+                DAFTAR KOMIK
               </Nav.Link>
               <Nav.Link
                 className="text-light"
