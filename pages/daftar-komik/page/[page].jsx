@@ -12,20 +12,34 @@ export default function daftarKomik() {
   const [komikPage, setPage] = useState([]);
   const [buttonPage, setButton] = useState([]);
 
-  function paginationHandling(page) {
-    return page.map((page, i) => {
-      return {
-        endpoint: page.endpoint.split("/"),
-        name: page.name,
-      };
-    });
-  }
-
   async function setDaftar(page = 1) {
     const res = await fetchDaftar(page);
     setPage(res.mangas);
     const pagination = paginationHandling(res.pagination);
     setButton(pagination);
+  }
+
+  function paginationHandling(pagination) {
+    const arr = [];
+    for (const p of pagination) {
+      if (!p.url || !p.endpoint) {
+        arr.push(
+          <Pagination.Item key={p.name} active>
+            {p.name}
+          </Pagination.Item>
+        )
+      } else {
+        let path = p.endpoint?.split('/')[2];
+        if (!path) path = '1';
+        arr.push(
+          <Pagination.Item key={p.name} href={`/daftar-komik/page/${path}`} as={`/daftar-komik/page/${path}`}>
+            {p.name}
+          </Pagination.Item>
+        )
+      }
+    }
+
+    return arr;
   }
 
   function ImageOnError(e) {
@@ -73,11 +87,12 @@ export default function daftarKomik() {
             </Col>
           ))}
           <Pagination className="justify-content-center" size="lg">
-            {buttonPage.map((buttonitems) => (
+            {buttonPage}
+            {/* {buttonPage.map((buttonitems) => (
               <Pagination.Item href={buttonitems.endpoint}>
                 {buttonitems.name}
               </Pagination.Item>
-            ))}
+            ))} */}
           </Pagination>
         </Row>
         <hr />
