@@ -10,10 +10,22 @@ export default function daftarKomik() {
   const router = useRouter();
   const { page } = router.query;
   const [komikPage, setPage] = useState([]);
+  const [buttonPage, setButton] = useState([]);
 
-  async function setDaftar(page) {
+  function paginationHandling(page) {
+    return page.map((page, i) => {
+      return {
+        endpoint: page.endpoint.split("/"),
+        name: page.name,
+      };
+    });
+  }
+
+  async function setDaftar(page = 1) {
     const res = await fetchDaftar(page);
     setPage(res.mangas);
+    const pagination = paginationHandling(res.pagination);
+    setButton(pagination);
   }
 
   function ImageOnError(e) {
@@ -25,7 +37,6 @@ export default function daftarKomik() {
 
   useEffect(() => {
     if (!router.isReady) return;
-    console.log(page);
     setDaftar(page);
   }, [router.isReady]);
 
@@ -61,24 +72,14 @@ export default function daftarKomik() {
               </Card>
             </Col>
           ))}
+          <Pagination className="justify-content-center" size="lg">
+            {buttonPage.map((buttonitems) => (
+              <Pagination.Item href={buttonitems.endpoint}>
+                {buttonitems.name}
+              </Pagination.Item>
+            ))}
+          </Pagination>
         </Row>
-        <Pagination>
-          <Pagination.First />
-          <Pagination.Prev />
-          <Pagination.Item>{1}</Pagination.Item>
-          <Pagination.Ellipsis />
-
-          <Pagination.Item>{10}</Pagination.Item>
-          <Pagination.Item>{11}</Pagination.Item>
-          <Pagination.Item active>{12}</Pagination.Item>
-          <Pagination.Item>{13}</Pagination.Item>
-          <Pagination.Item disabled>{14}</Pagination.Item>
-
-          <Pagination.Ellipsis />
-          <Pagination.Item>{20}</Pagination.Item>
-          <Pagination.Next />
-          <Pagination.Last />
-        </Pagination>
         <hr />
       </Container>
     </div>

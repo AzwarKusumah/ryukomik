@@ -8,9 +8,17 @@ import Link from "next/link";
 export default function Home() {
   const [homeKomik, setHomeLatest] = useState([]);
   const [homeKomik2, setHomePopular] = useState([]);
+
   useEffect(() => {
     getHome();
   }, []);
+
+  function ImageOnError(e) {
+    e.target.onerror = null;
+    const base64img = btoa(e.target.src);
+
+    return (e.target.src = `https://bypass.katowproject.my.id/?q=${base64img}`);
+  }
 
   async function getHome() {
     const res = await fetchHome();
@@ -42,6 +50,7 @@ export default function Home() {
                     src={homeitems.thumb}
                     height={300}
                     width={200}
+                    onError={ImageOnError}
                     className="rounded mx-auto d-block "
                   ></Image>
                   <p
@@ -67,7 +76,11 @@ export default function Home() {
             {homeKomik.map((homeitems) => (
               <Col className="col-lg-3 d-flex align-items-stretch">
                 <Card>
-                  <Card.Img variant="top" src={homeitems.thumb} />
+                  <Card.Img
+                    variant="top"
+                    src={homeitems.thumb}
+                    onError={ImageOnError}
+                  />
                   <Card.Body>
                     <Card.Title>{homeitems.name}</Card.Title>
                     <Card.Text>Baca {homeitems.name}</Card.Text>

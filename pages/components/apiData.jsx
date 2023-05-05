@@ -4,7 +4,7 @@ export async function fetchHome() {
   return data;
 }
 
-export async function fetchDaftar(page) {
+export async function fetchDaftar(page = 1) {
   const res = await fetch(
     "https://komi.katowproject.app/api/komikindo/daftar-komik/page/" + page
   );
