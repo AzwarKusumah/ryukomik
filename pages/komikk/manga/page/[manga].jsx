@@ -7,7 +7,7 @@ import Head from "next/head";
 
 export default function manga() {
   const router = useRouter();
-  const { page } = router.query;
+  const { manga: page } = router.query;
   const [mangaPage, setPage] = useState([]);
   const [buttonPage, setButton] = useState([]);
 
