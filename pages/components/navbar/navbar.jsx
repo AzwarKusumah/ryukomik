@@ -44,7 +44,7 @@ function navbar() {
               <Nav.Link
                 className="text-light"
                 style={{ fontFamily: "Poppins", fontWeight: "bold" }}
-                href="#action2"
+                href={`/komikk/manga/page/1`}
               >
                 MANGA
               </Nav.Link>
@@ -58,7 +58,7 @@ function navbar() {
               <Nav.Link
                 className="text-light"
                 style={{ fontFamily: "Poppins", fontWeight: "bold" }}
-                href="#"
+                href={`/komikk/manhua/page/1`}
               >
                 MANHUA
               </Nav.Link>
