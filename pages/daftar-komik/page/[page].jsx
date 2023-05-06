@@ -27,15 +27,19 @@ export default function daftarKomik() {
           <Pagination.Item key={p.name} active>
             {p.name}
           </Pagination.Item>
-        )
+        );
       } else {
-        let path = p.endpoint?.split('/')[2];
-        if (!path) path = '1';
+        let path = p.endpoint?.split("/")[2];
+        if (!path) path = "1";
         arr.push(
-          <Pagination.Item key={p.name} href={`/daftar-komik/page/${path}`} as={`/daftar-komik/page/${path}`}>
+          <Pagination.Item
+            key={p.name}
+            href={`/daftar-komik/page/${path}`}
+            as={`/daftar-komik/page/${path}`}
+          >
             {p.name}
           </Pagination.Item>
-        )
+        );
       }
     }
 
@@ -79,9 +83,15 @@ export default function daftarKomik() {
                   onError={ImageOnError}
                 />
                 <Card.Body>
-                  <Card.Title>{pageitems.name}</Card.Title>
-                  <Card.Text>Baca {pageitems.name}</Card.Text>
-                  <Button variant="danger">Baca sekarang!</Button>
+                  <Card.Title style={{ fontFamily: "Poppins" }}>
+                    {pageitems.name}
+                  </Card.Title>
+                  <Card.Text style={{ fontFamily: "Poppins" }}>
+                    Baca {pageitems.name}
+                  </Card.Text>
+                  <Button variant="danger" href={`/${pageitems.link.endpoint}`}>
+                    Baca sekarang!
+                  </Button>
                 </Card.Body>
               </Card>
             </Col>

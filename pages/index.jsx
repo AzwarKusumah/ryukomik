@@ -9,10 +9,6 @@ export default function Home() {
   const [homeKomik, setHomeLatest] = useState([]);
   const [homeKomik2, setHomePopular] = useState([]);
 
-  useEffect(() => {
-    getHome();
-  }, []);
-
   function ImageOnError(e) {
     e.target.onerror = null;
     const base64img = btoa(e.target.src);
@@ -25,6 +21,10 @@ export default function Home() {
     setHomeLatest(res.body.latest);
     setHomePopular(res.body.popular);
   }
+
+  useEffect(() => {
+    getHome();
+  }, []);
 
   return (
     <div>
@@ -82,9 +82,15 @@ export default function Home() {
                     onError={ImageOnError}
                   />
                   <Card.Body>
-                    <Card.Title>{homeitems.name}</Card.Title>
-                    <Card.Text>Baca {homeitems.name}</Card.Text>
-                    <Button variant="danger">Baca sekarang!</Button>
+                    <Card.Title style={{ fontFamily: "Poppins" }}>
+                      {homeitems.name}
+                    </Card.Title>
+                    <Card.Text style={{ fontFamily: "Poppins" }}>
+                      Baca {homeitems.name}
+                    </Card.Text>
+                    <Button variant="danger" style={{ fontFamily: "Poppins" }}>
+                      Baca sekarang!
+                    </Button>
                   </Card.Body>
                 </Card>
               </Col>

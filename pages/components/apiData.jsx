@@ -17,3 +17,11 @@ export async function fetchSearch() {
   const data = await res.json();
   return data;
 }
+
+export async function fetchDetail(endpoint) {
+  const res = await fetch(
+    "https://komi.katowproject.app/api/komikindo/komik/" + endpoint
+  );
+  const data = await res.json();
+  return data;
+}

@@ -84,7 +84,7 @@ function navbar() {
               <Nav.Link
                 style={{ fontFamily: "Poppins" }}
                 className="bg-secondary rounded-3 text-decoration-none text-light fs-6"
-                href={items.link.endpoint}
+                href={`/${items.link.endpoint}`}
               >
                 {items.name}
               </Nav.Link>
