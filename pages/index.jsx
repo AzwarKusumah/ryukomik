@@ -45,7 +45,10 @@ export default function Home() {
           <Row>
             {homeKomik2.map((homeitems) => (
               <Col lg="4">
-                <Link href={""} className="text-decoration-none text-dark">
+                <Link
+                  href={`/${homeitems.link.endpoint}`}
+                  className="text-decoration-none text-dark"
+                >
                   <Image
                     src={homeitems.thumb}
                     height={300}
@@ -88,7 +91,11 @@ export default function Home() {
                     <Card.Text style={{ fontFamily: "Poppins" }}>
                       Baca {homeitems.name}
                     </Card.Text>
-                    <Button variant="danger" style={{ fontFamily: "Poppins" }}>
+                    <Button
+                      variant="danger"
+                      style={{ fontFamily: "Poppins" }}
+                      href={`/${homeitems.link.endpoint}`}
+                    >
                       Baca sekarang!
                     </Button>
                   </Card.Body>

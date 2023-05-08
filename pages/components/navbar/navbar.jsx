@@ -11,14 +11,14 @@ import { useState, useEffect } from "react";
 function navbar() {
   const [navkomik, setNav] = useState([]);
 
-  useEffect(() => {
-    navList();
-  }, []);
-
   async function navList() {
     const res = await fetchHome();
     setNav(res.menu);
   }
+
+  useEffect(() => {
+    navList();
+  }, []);
 
   return (
     <div>
@@ -51,7 +51,7 @@ function navbar() {
               <Nav.Link
                 className="text-light"
                 style={{ fontFamily: "Poppins", fontWeight: "bold" }}
-                href=""
+                href={`/komikk/manhwa/page/1`}
               >
                 MANHWA
               </Nav.Link>
@@ -77,21 +77,6 @@ function navbar() {
           </Navbar.Collapse>
         </Container>
       </Navbar>
-      <div className="bg-light">
-        <Nav className="d-flex justify-content-evenly container mt-2 mb-2">
-          {navkomik.slice(0, 6).map((items) => (
-            <Nav.Item>
-              <Nav.Link
-                style={{ fontFamily: "Poppins" }}
-                className="bg-secondary rounded-3 text-decoration-none text-light fs-6"
-                href={`/${items.link.endpoint}`}
-              >
-                {items.name}
-              </Nav.Link>
-            </Nav.Item>
-          ))}
-        </Nav>
-      </div>
     </div>
   );
 }

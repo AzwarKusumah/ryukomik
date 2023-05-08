@@ -130,6 +130,7 @@ export default function komik() {
                       <Button
                         variant="danger"
                         href={`/chapter/${chapterlist.link.endpoint}`}
+                        style={{ fontFamily: "Poppins" }}
                       >
                         Baca Komik
                       </Button>

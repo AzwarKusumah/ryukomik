@@ -27,7 +27,11 @@ export default function manga() {
     for (const p of pagination) {
       if (!p.url || !p.endpoint) {
         arr.push(
-          <Pagination.Item key={p.name} active>
+          <Pagination.Item
+            key={p.name}
+            style={{ fontFamily: "Poppins" }}
+            active
+          >
             {p.name}
           </Pagination.Item>
         );
@@ -39,6 +43,7 @@ export default function manga() {
             key={p.name}
             href={`/komikk/manga/page/${path}`}
             as={`/komikk/manga/page/${path}`}
+            style={{ fontFamily: "Poppins" }}
           >
             {p.name}
           </Pagination.Item>
@@ -92,7 +97,11 @@ export default function manga() {
                   <Card.Text style={{ fontFamily: "Poppins" }}>
                     Baca {pageitems.name}
                   </Card.Text>
-                  <Button variant="danger" href={`/${pageitems.link.endpoint}`}>
+                  <Button
+                    variant="danger"
+                    href={`/${pageitems.link.endpoint}`}
+                    style={{ fontFamily: "Poppins" }}
+                  >
                     Baca sekarang!
                   </Button>
                 </Card.Body>

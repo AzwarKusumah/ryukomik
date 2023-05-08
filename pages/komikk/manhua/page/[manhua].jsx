@@ -5,7 +5,7 @@ import Navbar from "../../../components/navbar/navbar";
 import { useRouter } from "next/router";
 import Head from "next/head";
 
-export default function manga() {
+export default function manhua() {
   const router = useRouter();
   const { manhua: page } = router.query;
   const [manhuaPage, setPage] = useState([]);
@@ -26,7 +26,11 @@ export default function manga() {
     for (const p of pagination) {
       if (!p.url || !p.endpoint) {
         arr.push(
-          <Pagination.Item key={p.name} active>
+          <Pagination.Item
+            key={p.name}
+            style={{ fontFamily: "Poppins" }}
+            active
+          >
             {p.name}
           </Pagination.Item>
         );
@@ -38,6 +42,7 @@ export default function manga() {
             key={p.name}
             href={`/komikk/manhua/page/${path}`}
             as={`/komikk/manhua/page/${path}`}
+            style={{ fontFamily: "Poppins" }}
           >
             {p.name}
           </Pagination.Item>

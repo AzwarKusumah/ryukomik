@@ -33,7 +33,7 @@ export async function fetchDetail(endpoint) {
 //Url Chapter Detail Komik
 export async function fetchBaca(chapter) {
   const res = await fetch(
-    " https://komi.katowproject.app/api/komikindo/chapter/" + chapter
+    "https://komi.katowproject.app/api/komikindo/chapter/" + chapter
   );
   const data = await res.json();
   return data;
