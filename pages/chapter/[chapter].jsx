@@ -17,6 +17,22 @@ export default function chapter() {
     window.scrollTo(0, 0);
   };
 
+  /*function chapterPage(data) {
+    if (!data.prev) {
+      return (
+        <Pagination.Item style={{ fontFamily: "Poppins" }} disabled>
+          {"<<"} Sebelumnya
+        </Pagination.Item>
+      );
+    } else {
+      return (
+        <Pagination.Item style={{ fontFamily: "Poppins" }} href={data.prev}>
+          {"<<"} Sebelumnya
+        </Pagination.Item>
+      );
+    }
+  }*/
+
   async function setChapterDetail() {
     const res = await fetchBaca(chapter);
     setChapter(res);
@@ -51,18 +67,31 @@ export default function chapter() {
             {chapterList.title}
           </h1>
           <Pagination className="d-flex justify-content-center mt-5" size="md">
-            <Pagination.Item
-              style={{ fontFamily: "Poppins" }}
-              href={chapterLink.prev}
-            >
-              {"<<"} Sebelumnya
-            </Pagination.Item>
-            <Pagination.Item
-              style={{ fontFamily: "Poppins" }}
-              href={chapterLink.next}
-            >
-              Selanjutnya {">>"}
-            </Pagination.Item>
+            {chapterLink.prev ? (
+              <Pagination.Item
+                style={{ fontFamily: "Poppins" }}
+                href={chapterLink.prev}
+              >
+                {"<<"} Sebelumnya
+              </Pagination.Item>
+            ) : (
+              <Pagination.Item style={{ fontFamily: "Poppins" }} disabled>
+                {"<<"} Sebelumnya
+              </Pagination.Item>
+            )}
+
+            {chapterLink.next ? (
+              <Pagination.Item
+                style={{ fontFamily: "Poppins" }}
+                href={chapterLink.next}
+              >
+                Selanjutnya {">>"}
+              </Pagination.Item>
+            ) : (
+              <Pagination.Item style={{ fontFamily: "Poppins" }} disabled>
+                Selanjutnya {">>"}
+              </Pagination.Item>
+            )}
           </Pagination>
           <hr />
           {chapterImage.map((gambaritems) => (
@@ -76,7 +105,7 @@ export default function chapter() {
           ))}
           <hr />
           <Pagination className="d-flex justify-content-center mt-5" size="md">
-            <Pagination.Item
+            {/* <Pagination.Item
               style={{ fontFamily: "Poppins" }}
               href={chapterLink.prev}
             >
@@ -87,7 +116,33 @@ export default function chapter() {
               href={chapterLink.next}
             >
               Selanjutnya {">>"}
-            </Pagination.Item>
+            </Pagination.Item> */}
+
+            {chapterLink.prev ? (
+              <Pagination.Item
+                style={{ fontFamily: "Poppins" }}
+                href={chapterLink.prev}
+              >
+                {"<<"} Sebelumnya
+              </Pagination.Item>
+            ) : (
+              <Pagination.Item style={{ fontFamily: "Poppins" }} disabled>
+                {"<<"} Sebelumnya
+              </Pagination.Item>
+            )}
+
+            {chapterLink.next ? (
+              <Pagination.Item
+                style={{ fontFamily: "Poppins" }}
+                href={chapterLink.next}
+              >
+                Selanjutnya {">>"}
+              </Pagination.Item>
+            ) : (
+              <Pagination.Item style={{ fontFamily: "Poppins" }} disabled>
+                Selanjutnya {">>"}
+              </Pagination.Item>
+            )}
           </Pagination>
         </Container>
       </main>

@@ -1,6 +1,7 @@
 import React from "react";
 import { useEffect, useState } from "react";
 import { fetchDetail } from "../components/apiData";
+import DB from "../../helper/localstorage";
 import {
   Container,
   Col,
@@ -14,16 +15,33 @@ import Navbar from "../components/navbar/navbar";
 import Head from "next/head";
 import { useRouter } from "next/router";
 export default function komik() {
+  const db = new DB();
   const router = useRouter();
   const { komik } = router.query;
   const [komikDetail, setDetail] = useState([]);
   const [komikGenre, setGenreKomik] = useState([]);
   const [komikChapter, setChapter] = useState([]);
+  const [bookmark, setBookmark] = useState([]);
   async function funDetail() {
     const res = await fetchDetail(komik);
     setDetail(res);
     setGenreKomik(res.genres);
     setChapter(res.chapters);
+  }
+
+  async function bookmarkCheck() {
+    const bookmarks = db.get(komik);
+    return bookmarks;
+  }
+
+  async function setToBookmark(bookmark) {
+    const endpoint = komik;
+    const res = await fetch(
+      `https://komi.katowproject.app/api/komikindo/komik/${endpoint}`
+    );
+    const json = await res.json();
+    db.set(json);
+    console.log(json);
   }
 
   function ImageOnError(e) {
@@ -36,7 +54,10 @@ export default function komik() {
   useEffect(() => {
     if (!router.isReady) return;
     funDetail(komik);
+    setBookmark(bookmarkCheck());
   }, [router.isReady]);
+
+  console.log(bookmark);
   return (
     <div>
       <Head>
@@ -59,6 +80,32 @@ export default function komik() {
                 className="rounded"
                 onError={ImageOnError}
               />
+              {!bookmark ? (
+                <Button
+                  variant="danger"
+                  className="mt-2 d-flex mx-auto justify-content-center"
+                  size="lg"
+                  onClick={setToBookmark}
+                >
+                  Bookmark
+                </Button>
+              ) : (
+                <Button
+                  variant="danger"
+                  className="mt-2 d-flex mx-auto justify-content-center"
+                  size="lg"
+                >
+                  unBookmark
+                </Button>
+              )}
+              {/* <Button
+                variant="danger"
+                className="mt-2 d-flex mx-auto justify-content-center"
+                size="lg"
+                onClick={setToBookmark}
+              >
+                Bookmark
+              </Button> */}
             </Col>
             <Col md={6} className="mt-5">
               <ListGroup>
