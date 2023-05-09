@@ -29,6 +29,13 @@ class LocalStorageService {
   update(key, value) {
     return this.db.setItem(key, value);
   }
+
+  get_all() {
+    const bookmarks = this.db.getItem("bookmarks")
+      ? JSON.parse(this.db.getItem("bookmarks"))
+      : [];
+    return bookmarks;
+  }
 }
 
 export default LocalStorageService;
