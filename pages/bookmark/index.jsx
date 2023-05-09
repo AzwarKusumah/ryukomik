@@ -14,6 +14,7 @@ export default function index() {
     setBookmark(bookmarks);
   }
 
+  //Function Menampilkan isi bookmark
   function bookmarkHandling() {
     const arr = [];
     for (const b of bookmark) {

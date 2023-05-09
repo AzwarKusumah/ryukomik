@@ -32,11 +32,13 @@ export default function komik() {
     setChapter(res.chapters);
   }
 
+  //Funtion Ngecek bookmark udah ada di bookmark atau belum
   async function bookmarkCheck() {
     const bookmarks = db.get(komik);
     setBookmark(bookmarks);
   }
 
+  //Function Buat nambahin ke bookmark
   async function setToBookmark() {
     const endpoint = komik;
     const res = await fetch(
@@ -49,6 +51,7 @@ export default function komik() {
     bookmarkCheck(komik);
   }
 
+  //Function Hapus Bookmark
   async function deleteBookmark() {
     db.remove(komik);
     // update button

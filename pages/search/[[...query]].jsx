@@ -30,6 +30,7 @@ export default function search() {
     return (e.target.src = `https://bypass.katowproject.my.id/?q=${base64img}`);
   }
 
+  //Function pagination
   function paginationHandling(pagination) {
     const arr = [];
     for (const p of pagination) {

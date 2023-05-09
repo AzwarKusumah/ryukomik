@@ -9,6 +9,7 @@ export default function Home() {
   const [homeKomik, setHomeLatest] = useState([]);
   const [homeKomik2, setHomePopular] = useState([]);
 
+  // function bypass gambar error
   function ImageOnError(e) {
     e.target.onerror = null;
     const base64img = btoa(e.target.src);
@@ -16,12 +17,14 @@ export default function Home() {
     return (e.target.src = `https://bypass.katowproject.my.id/?q=${base64img}`);
   }
 
+  //function memanggil api dari file apiData
   async function getHome() {
     const res = await fetchHome();
     setHomeLatest(res.body.latest);
     setHomePopular(res.body.popular);
   }
 
+  // Pemanggilan function
   useEffect(() => {
     getHome();
   }, []);
