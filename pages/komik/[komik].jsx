@@ -14,6 +14,7 @@ import {
 import Navbar from "../components/navbar/navbar";
 import Head from "next/head";
 import { useRouter } from "next/router";
+
 export default function komik() {
   const db = new DB();
   const router = useRouter();
@@ -22,6 +23,7 @@ export default function komik() {
   const [komikGenre, setGenreKomik] = useState([]);
   const [komikChapter, setChapter] = useState([]);
   const [bookmark, setBookmark] = useState([]);
+
   async function funDetail() {
     const res = await fetchDetail(komik);
     setDetail(res);
@@ -31,19 +33,26 @@ export default function komik() {
 
   async function bookmarkCheck() {
     const bookmarks = db.get(komik);
-    return bookmarks;
+    setBookmark(bookmarks);
   }
 
-  async function setToBookmark(bookmark) {
+  async function setToBookmark() {
     const endpoint = komik;
     const res = await fetch(
       `https://komi.katowproject.app/api/komikindo/komik/${endpoint}`
     );
     const json = await res.json();
     db.set(json);
-    console.log(json);
+
+    // update button
+    bookmarkCheck(komik);
   }
 
+  async function deleteBookmark() {
+    db.remove(komik);
+    // update button
+    bookmarkCheck(komik);
+  }
   function ImageOnError(e) {
     e.target.onerror = null;
     const base64img = btoa(e.target.src);
@@ -54,7 +63,8 @@ export default function komik() {
   useEffect(() => {
     if (!router.isReady) return;
     funDetail(komik);
-    setBookmark(bookmarkCheck());
+    bookmarkCheck(komik);
+
   }, [router.isReady]);
 
   console.log(bookmark);
@@ -94,8 +104,9 @@ export default function komik() {
                   variant="danger"
                   className="mt-2 d-flex mx-auto justify-content-center"
                   size="lg"
+                  onClick={deleteBookmark}
                 >
-                  unBookmark
+                  Unbookmark
                 </Button>
               )}
               {/* <Button

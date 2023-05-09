@@ -12,7 +12,10 @@ class LocalStorageService {
   }
 
   remove(key) {
-    return this.db.removeItem(key);
+    const bookmarks = this.db.getItem("bookmarks") ? JSON.parse(this.db.getItem("bookmarks")) : [];
+    const newBookmarks = bookmarks.filter((bookmark) => !bookmark.url.includes(key));
+
+    return this.db.setItem("bookmarks", JSON.stringify(newBookmarks));
   }
 
   set(value) {
