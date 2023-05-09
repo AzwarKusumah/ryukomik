@@ -5,7 +5,7 @@ import Navbar from "../../../components/navbar/navbar";
 import { useRouter } from "next/router";
 import Head from "next/head";
 
-export default function manhua() {
+export default function Manhua() {
   const router = useRouter();
   const { manhua: page } = router.query;
   const [manhuaPage, setPage] = useState([]);

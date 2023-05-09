@@ -6,7 +6,7 @@ import Navbar from "../components/navbar/navbar";
 import Head from "next/head";
 import { Container, Row, Col, Card, Button, Pagination } from "react-bootstrap";
 
-export default function search() {
+export default function Search() {
   const router = useRouter();
   const { query } = router.query;
   console.log(router.query);

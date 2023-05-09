@@ -6,7 +6,7 @@ import Navbar from "../components/navbar/navbar";
 import { useRouter } from "next/router";
 import { FaArrowUp } from "react-icons/fa";
 import Head from "next/head";
-export default function chapter() {
+export default function Chapter() {
   const router = useRouter();
   const { chapter } = router.query;
   const [chapterList, setChapter] = useState([]);

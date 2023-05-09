@@ -16,7 +16,7 @@ import Head from "next/head";
 import { useRouter } from "next/router";
 import { AiOutlinePlusCircle, AiOutlineMinusCircle } from "react-icons/ai";
 
-export default function komik() {
+export default function Komik() {
   const db = new DB();
   const router = useRouter();
   const { komik } = router.query;
@@ -51,7 +51,7 @@ export default function komik() {
     bookmarkCheck(komik);
   }
 
-  //Function Hapus Bookmark
+  //Function HapusBookmark
   async function deleteBookmark() {
     db.remove(komik);
     // update button

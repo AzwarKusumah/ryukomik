@@ -6,7 +6,7 @@ import Navbar from "../../components/navbar/navbar";
 import { useRouter } from "next/router";
 import Head from "next/head";
 
-export default function daftarKomik() {
+export default function DaftarKomik() {
   const router = useRouter();
   const { page } = router.query;
   const [komikPage, setPage] = useState([]);

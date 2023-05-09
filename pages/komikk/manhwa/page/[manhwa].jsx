@@ -5,7 +5,7 @@ import Navbar from "../../../components/navbar/navbar";
 import { useRouter } from "next/router";
 import Head from "next/head";
 
-export default function manhwa() {
+export default function Manhwa() {
   const router = useRouter();
   const { manhwa: page } = router.query;
   const [manhwaPage, setPage] = useState([]);

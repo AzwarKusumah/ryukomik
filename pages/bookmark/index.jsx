@@ -5,7 +5,7 @@ import Head from "next/head";
 import { useEffect, useState } from "react";
 import { Container, Row, Col, Card, Button, Image } from "react-bootstrap";
 
-export default function index() {
+export default function Index() {
   const db = new DB();
   const [bookmark, setBookmark] = useState([]);
 

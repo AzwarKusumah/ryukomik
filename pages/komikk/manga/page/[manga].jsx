@@ -5,7 +5,7 @@ import Navbar from "../../../components/navbar/navbar";
 import { useRouter } from "next/router";
 import Head from "next/head";
 
-export default function manga() {
+export default function Manga() {
   const router = useRouter();
   const { manga: page } = router.query;
   const [mangaPage, setPage] = useState([]);

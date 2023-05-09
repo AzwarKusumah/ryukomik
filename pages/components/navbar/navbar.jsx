@@ -8,7 +8,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { fetchHome } from "../apiData";
 import { useState, useEffect } from "react";
-function navbar() {
+
+function UseNavbar() {
   const [navkomik, setNav] = useState([]);
 
   async function navList() {
@@ -107,4 +108,4 @@ function navbar() {
   );
 }
 
-export default navbar;
+export default UseNavbar;
