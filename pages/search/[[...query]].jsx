@@ -1,24 +1,33 @@
 import React from "react";
+import { fetchSearch } from "../components/apiData";
 import { useEffect, useState } from "react";
-import { Container, Row, Col, Card, Button, Pagination } from "react-bootstrap";
-import Navbar from "../../../components/navbar/navbar";
 import { useRouter } from "next/router";
+import Navbar from "../components/navbar/navbar";
 import Head from "next/head";
+import { Container, Row, Col, Card, Button, Pagination } from "react-bootstrap";
 
-export default function manhwa() {
+export default function search() {
   const router = useRouter();
-  const { manhwa: page } = router.query;
-  const [manhwaPage, setPage] = useState([]);
+  const { query } = router.query;
+  console.log(router.query);
+  const q = query ? query[0] : null;
+  const page = query ? query[2] : null;
+  const [usSearch, setSearch] = useState([]);
   const [buttonPage, setButton] = useState([]);
 
-  async function setDaftar(page = 1) {
-    const res = await fetch(
-      "https://komi.katowproject.app/api/komikindo/komikk/manhwa/page/" + page
-    );
-    const data = await res.json();
-    setPage(data.mangas);
-    const pagination = paginationHandling(data.pagination);
+  async function getSearch() {
+    const res = await fetchSearch(q, page);
+    setSearch(res.mangas);
+    const pagination = paginationHandling(res.pagination);
     setButton(pagination);
+    console.log(res);
+  }
+
+  function ImageOnError(e) {
+    e.target.onerror = null;
+    const base64img = btoa(e.target.src);
+
+    return (e.target.src = `https://bypass.katowproject.my.id/?q=${base64img}`);
   }
 
   function paginationHandling(pagination) {
@@ -35,13 +44,14 @@ export default function manhwa() {
           </Pagination.Item>
         );
       } else {
-        let path = p.endpoint?.split("/")[2];
-        if (!path) path = "1";
+        let page = p.endpoint?.match(/\d+/g).pop();
+        let query = p.endpoint?.split("/")[1];
+        if (!page) page = "1";
         arr.push(
           <Pagination.Item
             key={p.name}
-            href={`/komikk/manhwa/page/${path}`}
-            as={`/komikk/manhwa/page/${path}`}
+            href={`/search/${query}/page/${page}`}
+            as={`/search/${query}/page/${page}`}
             style={{ fontFamily: "Poppins" }}
           >
             {p.name}
@@ -53,16 +63,9 @@ export default function manhwa() {
     return arr;
   }
 
-  function ImageOnError(e) {
-    e.target.onerror = null;
-    const base64img = btoa(e.target.src);
-
-    return (e.target.src = `https://bypass.katowproject.my.id/?q=${base64img}`);
-  }
-
   useEffect(() => {
     if (!router.isReady) return;
-    setDaftar(page);
+    getSearch(query);
   }, [router.isReady]);
 
   return (
@@ -81,7 +84,7 @@ export default function manhwa() {
       <Container>
         <hr />
         <Row className="g-4">
-          {manhwaPage.map((pageitems) => (
+          {usSearch.map((pageitems) => (
             <Col className="col-lg-3 d-flex align-items-stretch">
               <Card>
                 <Card.Img
@@ -111,7 +114,6 @@ export default function manhwa() {
             {buttonPage}
           </Pagination>
         </Row>
-        <hr />
       </Container>
     </div>
   );

@@ -16,6 +16,19 @@ function navbar() {
     setNav(res.menu);
   }
 
+  function searchKeyUp(e) {
+    if (e.keyCode !== 13) return;
+    const form = document.getElementById("query");
+    const query = form.value;
+    window.location.href = "/search/" + query;
+  }
+
+  function search() {
+    const form = document.getElementById("query");
+    const query = form.value;
+    window.location.href = "/search/" + query;
+  }
+
   useEffect(() => {
     navList();
   }, []);
@@ -62,18 +75,31 @@ function navbar() {
               >
                 MANHUA
               </Nav.Link>
+              <Nav.Link
+                className="text-light"
+                style={{ fontFamily: "Poppins", fontWeight: "bold" }}
+                href={`/bookmark`}
+              >
+                BOOKMARK
+              </Nav.Link>
             </Nav>
-            <Form className="d-flex">
+            <div className="d-flex" id="search">
               <Form.Control
                 type="search"
                 placeholder="Search"
                 className="me-2"
                 aria-label="Search"
+                id="query"
+                onKeyUp={searchKeyUp}
               />
-              <Button style={{ fontFamily: "Poppins" }} variant="light">
+              <Button
+                style={{ fontFamily: "Poppins" }}
+                variant="light"
+                onClick={search}
+              >
                 Search
               </Button>
-            </Form>
+            </div>
           </Navbar.Collapse>
         </Container>
       </Navbar>

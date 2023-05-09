@@ -15,8 +15,10 @@ export async function fetchDaftar(page = 1) {
 }
 
 //Url Search
-export async function fetchSearch() {
-  const res = await fetch("https://komi.katowproject.app/api/komikindo/home");
+export async function fetchSearch(query, page = 1) {
+  const res = await fetch(
+    `https://komi.katowproject.app/api/komikindo/search/${query}/?page=${page}`
+  );
   const data = await res.json();
   return data;
 }

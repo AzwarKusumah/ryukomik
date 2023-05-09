@@ -14,6 +14,7 @@ import {
 import Navbar from "../components/navbar/navbar";
 import Head from "next/head";
 import { useRouter } from "next/router";
+import { AiOutlinePlusCircle, AiOutlineMinusCircle } from "react-icons/ai";
 
 export default function komik() {
   const db = new DB();
@@ -64,10 +65,7 @@ export default function komik() {
     if (!router.isReady) return;
     funDetail(komik);
     bookmarkCheck(komik);
-
   }, [router.isReady]);
-
-  console.log(bookmark);
   return (
     <div>
       <Head>
@@ -97,7 +95,7 @@ export default function komik() {
                   size="lg"
                   onClick={setToBookmark}
                 >
-                  Bookmark
+                  <AiOutlinePlusCircle /> Bookmark
                 </Button>
               ) : (
                 <Button
@@ -106,7 +104,7 @@ export default function komik() {
                   size="lg"
                   onClick={deleteBookmark}
                 >
-                  Unbookmark
+                  <AiOutlineMinusCircle /> Unbookmark
                 </Button>
               )}
               {/* <Button
