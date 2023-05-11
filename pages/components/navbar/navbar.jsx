@@ -6,7 +6,7 @@ import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import Image from "next/image";
 import Link from "next/link";
-import { fetchHome } from "../apiData";
+import { fetchHome } from "../../../components/apiData";
 import { useState, useEffect } from "react";
 
 function UseNavbar() {

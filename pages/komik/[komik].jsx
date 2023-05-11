@@ -1,6 +1,6 @@
 import React from "react";
 import { useEffect, useState } from "react";
-import { fetchDetail } from "../components/apiData";
+import { fetchDetail } from "../../components/apiData";
 import DB from "../../helper/localstorage";
 import {
   Container,

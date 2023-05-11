@@ -1,7 +1,7 @@
 import Head from "next/head";
 import Navbar from "./components/navbar/navbar";
 import { Container, Row, Col, Card, Button, Image } from "react-bootstrap";
-import { fetchHome } from "./components/apiData";
+import { fetchHome } from "../components/apiData";
 import { BsFire } from "react-icons/bs";
 import { useEffect, useState } from "react";
 import Link from "next/link";

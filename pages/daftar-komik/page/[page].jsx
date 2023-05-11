@@ -1,6 +1,6 @@
 import React from "react";
 import { useEffect, useState } from "react";
-import { fetchDaftar } from "../../components/apiData";
+import { fetchDaftar } from "../../../components/apiData";
 import { Container, Row, Col, Card, Button, Pagination } from "react-bootstrap";
 import Navbar from "../../components/navbar/navbar";
 import { useRouter } from "next/router";

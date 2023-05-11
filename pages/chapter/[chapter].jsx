@@ -1,6 +1,6 @@
 import React from "react";
 import { useEffect, useState } from "react";
-import { fetchBaca } from "../components/apiData";
+import { fetchBaca } from "../../components/apiData";
 import { Container, Image, Pagination } from "react-bootstrap";
 import Navbar from "../components/navbar/navbar";
 import { useRouter } from "next/router";

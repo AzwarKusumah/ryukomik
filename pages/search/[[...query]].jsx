@@ -1,5 +1,5 @@
 import React from "react";
-import { fetchSearch } from "../components/apiData";
+import { fetchSearch } from "../../components/apiData";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import Navbar from "../components/navbar/navbar";
