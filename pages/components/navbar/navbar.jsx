@@ -39,7 +39,12 @@ function UseNavbar() {
       <Navbar bg="danger" expand="lg">
         <Container fluid className="px-5">
           <Link href="/">
-            <Image alt="logo" src="/ryukomik.png" width={150} height={70} />
+            <Image
+              alt="logo"
+              src="/ryukomik_logo.png"
+              width={150}
+              height={70}
+            />
           </Link>
           <Navbar.Toggle aria-controls="navbarScroll" />
           <Navbar.Collapse className="ms-5 " id="navbarScroll">
