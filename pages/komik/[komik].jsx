@@ -88,7 +88,7 @@ export default function Komik() {
                 src={komikDetail.thumb}
                 width={407}
                 height={578}
-                className="rounded"
+                className="rounded img-fluid"
                 onError={ImageOnError}
               />
               {!bookmark ? (
