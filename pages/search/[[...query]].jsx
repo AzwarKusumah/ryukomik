@@ -9,7 +9,6 @@ import { Container, Row, Col, Card, Button, Pagination } from "react-bootstrap";
 export default function Search() {
   const router = useRouter();
   const { query } = router.query;
-  console.log(router.query);
   const q = query ? query[0] : null;
   const page = query ? query[2] : null;
   const [usSearch, setSearch] = useState([]);
@@ -20,7 +19,6 @@ export default function Search() {
     setSearch(res.mangas);
     const pagination = paginationHandling(res.pagination);
     setButton(pagination);
-    console.log(res);
   }
 
   function ImageOnError(e) {

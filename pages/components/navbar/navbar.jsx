@@ -88,6 +88,13 @@ function UseNavbar() {
               >
                 BOOKMARK
               </Nav.Link>
+              <Nav.Link
+                className="text-light"
+                style={{ fontFamily: "Poppins", fontWeight: "bold" }}
+                href={`https://anime.ryukoproject.app/`}
+              >
+                ANIME
+              </Nav.Link>
             </Nav>
             <div className="d-flex" id="search">
               <Form.Control
