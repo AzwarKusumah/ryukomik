@@ -70,7 +70,7 @@ export default function Chapter() {
             {chapterLink.prev ? (
               <Pagination.Item
                 style={{ fontFamily: "Poppins" }}
-                href={chapterLink.prev}
+                href={`/chapter/${chapterLink.prev.split("https://komikindo.one")[1]}`}
               >
                 {"<<"} Sebelumnya
               </Pagination.Item>
@@ -83,7 +83,7 @@ export default function Chapter() {
             {chapterLink.next ? (
               <Pagination.Item
                 style={{ fontFamily: "Poppins" }}
-                href={chapterLink.next}
+                href={`/chapter/${chapterLink.next.split("https://komikindo.one")[1]}`}
               >
                 Selanjutnya {">>"}
               </Pagination.Item>

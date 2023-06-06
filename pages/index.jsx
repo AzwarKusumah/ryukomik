@@ -49,7 +49,7 @@ export default function Home() {
             {homeKomik2.map((homeitems) => (
               <Col lg="4">
                 <Link
-                  href={`/${homeitems.link.endpoint}`}
+                  href={`/${homeitems.link.endpoint.split("https://komikindo.one")[1]}`}
                   className="text-decoration-none text-dark"
                 >
                   <Image
@@ -97,7 +97,7 @@ export default function Home() {
                     <Button
                       variant="danger"
                       style={{ fontFamily: "Poppins" }}
-                      href={`/${homeitems.link.endpoint}`}
+                      href={`${homeitems.link.endpoint.split("https://komikindo.one")[1]}`}
                     >
                       Baca sekarang!
                     </Button>

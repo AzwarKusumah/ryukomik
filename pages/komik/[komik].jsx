@@ -188,7 +188,7 @@ export default function Komik() {
                     <td className="justify-content-end d-flex">
                       <Button
                         variant="danger"
-                        href={`/chapter/${chapterlist.link.endpoint}`}
+                        href={`/chapter/${chapterlist.link.endpoint.split("https://komikindo.one")[1]}`}
                         style={{ fontFamily: "Poppins" }}
                       >
                         Baca Komik

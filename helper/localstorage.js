@@ -9,6 +9,7 @@ class LocalStorageService {
       ? JSON.parse(this.db.getItem("bookmarks"))
       : [];
     const bookmark = bookmarks.find((bookmark) => bookmark.url.includes(key));
+    console.log(bookmarks)
     return bookmark;
   }
 
